@@ -1,0 +1,44 @@
+<!-- . WAP to display students stored in array. (A) -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <script>
+        let a1 = [
+            {
+                "Rollno" : "101",
+                "Name" : "Rohit",
+                "Spi" : "8.9"
+            },
+            {
+                "Rollno" : "102",
+                "Name" : "Mohit",
+                "Spi" : "8.1"
+            },
+            {
+                "Rollno" : "103",
+                "Name" : "Mahesh",
+                "Spi" : "6.5"
+            },
+            {
+                "Rollno" : "104",
+                "Name" : "Rahul",
+                "Spi" : "7.8"
+            },
+            {
+                "Rollno" : "105",
+                "Name" : "Arya",
+                "Spi" : "9.0"
+            }
+        ]
+
+        for(stu of a1){
+            console.log(stu.Rollno+"---->"+stu.Name+" : ["+stu.Spi+"]");
+        }
+    </script>
+ </body>
+ </html>

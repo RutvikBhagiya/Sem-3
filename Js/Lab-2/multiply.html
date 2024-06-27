@@ -1,0 +1,31 @@
+<!-- . Write a JavaScript to take 2-digit number and then separate these 2 digits, then multiply 
+ƒrst digit by itself for second digit times. (B) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let num = parseInt(prompt("Enter a num in 2 digit:"));
+        let fname = 0;
+        let lname = 0;
+        let ans = 1;
+        if(num<10 || num>99){
+            alert("Your entered number is not in 2 digit");
+        }
+        else{
+            fname = parseInt(num/10);
+            lname = parseInt(num%10);
+            for(let i=0;i<lname;i++){
+                ans = ans*fname;
+            }
+            document.write(ans);
+        }
+    </script>
+</body>
+</html>
