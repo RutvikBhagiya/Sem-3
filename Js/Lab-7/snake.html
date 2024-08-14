@@ -1,0 +1,123 @@
+<!-- 9. Create a Snake game using Java script. (C) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        overflow: hidden;
+    }
+    #gameArea{
+        width: 100vw;
+        height: 100vh;
+    }
+    #food{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        
+    }
+
+    #snake{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        
+    }
+</style>
+<body>
+    <div id="score"></div>
+    <div id="gameArea">
+        <img id="food" src="square.png" >
+        <img id="snake" src="snake.jpg" >
+    </div>
+    
+    <script>
+        let count = 0;
+        const snake = document.getElementById('snake');
+        const food = document.getElementById('food');
+        const gameArea = document.getElementById('gameArea');
+
+        let topPosi = 0;
+        let leftPosi = 0;
+        let snakeHeight = snake.offsetHeight;
+        let snakeWidth = snake.offsetWidth;
+        let foodWidth = food.offsetWidth;
+        let foodHeight = food.offsetHeight;
+
+        document.addEventListener('keydown', keyPressed);
+    
+        function keyPressed(e) {
+            if (e.key === 'ArrowUp') {
+                moveUp();
+            } else if (e.key === 'ArrowDown') {
+                moveDown();
+            } else if (e.key === 'ArrowLeft') {
+                moveLeft();
+            } else if (e.key === 'ArrowRight') {
+                moveRight();
+            }
+            if (checkCollision()) {
+                count++; 
+                placeFood(); 
+                document.getElementById('score').innerHTML= "Score : "+count;
+            }
+        }
+
+        function moveUp(){
+            topPosi -= 20;
+            snake.style.top = topPosi +'px';
+            
+        }
+
+        function moveDown(){
+            topPosi += 20;
+            snake.style.top = topPosi +'px';
+        }
+
+        function moveLeft(){
+            leftPosi -= 20;
+            snake.style.left = leftPosi +'px';
+        }
+
+        function moveRight(){
+            leftPosi += 20;
+            snake.style.left = leftPosi +'px';
+        }
+
+
+        function getRandomPosition() {
+            const maxLeft = gameArea.clientWidth - foodWidth;
+            const maxTop = gameArea.clientHeight - foodHeight;
+            const randomLeft = Math.floor(Math.random() * maxLeft);
+            const randomTop = Math.floor(Math.random() * maxTop);
+            return { left: randomLeft, top: randomTop };
+        }
+        
+        function placeFood() {
+            const position = getRandomPosition();
+            food.style.left = position.left + 'px';
+            food.style.top = position.top + 'px';
+        }
+
+        function checkCollision() {
+            const snakeRect = snake.getBoundingClientRect();
+            const foodRect = food.getBoundingClientRect();
+        
+            return !(reminder=5,
+                snakeRect.top > (foodRect.bottom-5) ||
+                snakeRect.bottom < (foodRect.top+5) ||
+                snakeRect.left > (foodRect.right-5) ||
+                snakeRect.right < (foodRect.left+5)
+            );
+        }
+
+        placeFood();
+    </script>
+</body>
+</html>

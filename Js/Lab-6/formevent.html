@@ -1,0 +1,41 @@
+<!-- WAP to recognize which form event is ƒired. (B) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Event Listener</title>
+</head>
+<body>
+    <div style="margin: 20px;">
+        <form id="myForm">
+            <input type="text" id="textInput" placeholder="Type something..." onfocus="eventFired(event)" onblur="eventFired(event)" onchange="eventFired(event)">
+            <br><br>
+            <input type="checkbox" id="checkboxInput" onchange="eventFired(event)"> Check me
+            <br><br>
+            <select id="selectInput" onchange="eventFired(event)">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+            <br><br>
+            <button type="submit" onclick="eventFired(event)">Submit</button>
+        </form>
+        <button style="margin-top: 10px;" onclick="clearAll()">Clear</button>
+        <div id="eventOutput" style="margin-top: 20px;"></div>
+    </div>
+    <script>
+        function eventFired(e){
+            e.preventDefault();
+            let eventType = e.type;
+            let elementId = e.target.id;
+            document.getElementById('eventOutput').innerHTML += 'Event: '+eventType+', Element: '+elementId+' <br>';
+        }
+
+        function clearAll(){
+            document.getElementById('eventOutput').innerHTML = "";
+        }
+    </script>
+</body>
+</html>

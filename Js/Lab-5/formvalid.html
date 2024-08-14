@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Enter Name:</td>
+            <td><input type="text" id="name"/></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="text" id="pass"/></td>
+        </tr>
+        <tr>
+            <td>Re enter Password:</td>
+            <td><input type="text" id="repass"/></td>
+        </tr>
+        <tr>
+            <td>E-mail:</td>
+            <td><input type="text" id="email"/></td>
+        </tr>
+        <tr>
+            <td>Enrollement no:</td>
+            <td><input type="text" id="eroll"/></td>
+        </tr>
+        <tr>
+            <td>Mobile no:</td>
+            <td><input type="text" id="mobile"/></td>
+        </tr>
+        <tr>
+            <td>Enter Date of Birth:</td>
+            <td><input type="date" id="dob"/></td>
+        </tr>
+        <tr>
+            <td><button onclick="validationCheck()">Submit</button></td>
+        </tr>
+        <tr>
+            <div id="print"></div>
+        </tr>
+
+    </table>
+</body>
+<script>
+    function validationCheck(){
+        patternCheck();
+        dateCheck();
+    }
+
+    function patternCheck(){
+        let a = document.getElementById("name");
+        
+        let b = document.getElementById("pass");
+        
+        let c = document.getElementById("repass");
+        
+        let d = document.getElementById("email");
+        
+        let e = document.getElementById("eroll");
+
+        let f = document.getElementById("mobile");
+
+
+
+        let  namepattern = /^[a-zA-Z0-9]{8,}$/;
+        let  passpattern = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,12}$/;
+        let  emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        let  enrollpattern = /^2301[0-9]{7}$/
+        let  mopattern = /^[0-9]{10}$/
+
+
+
+        if(!namepattern.test(a.value)){
+         alert("Name is not in our pattern please follow pattern")
+         }
+        if(!passpattern.test(b.value)){
+         alert("Password is not in our pattern please follow pattern")
+         }
+        if((b.value)!=(c.value)){
+            alert("Your reentered password is not same<<<")
+        }
+        if(!emailpattern.test(d.value)){
+         alert("e-mail is not in our pattern please follow pattern")
+         }
+        if(!enrollpattern.test(e.value)){
+         alert("Enrollement is not in our pattern please follow pattern")
+         }
+        if(!mopattern.test(f.value)){
+         alert("mobileno is not in our pattern please follow pattern")
+         }
+
+    }
+
+
+    function dateCheck(){
+      let datebirth = new Date(document.getElementById("dob".value));
+      let todate = new Date();
+      let today = datebirth.getFullYear("dob") - todate.getFullYear();
+      document.getElementById("print").innerHTML=today.value  
+    }
+
+    
+</script>
+</html>

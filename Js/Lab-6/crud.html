@@ -1,0 +1,64 @@
+<!-- 7. WAP to perform CRUD operation on Array using HTML and JavaScript. (C) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="name">
+        <button id="edit/add" onclick='addEdit()'></button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        let btn1 = document.getElementById('edit/add');
+        btn1.innerHTML='Add';
+        let arr=[];
+        let index;
+        function addEdit(){
+            if(btn1.innerHTML == 'Add'){
+                arr.push(document.getElementById('name').value);
+                document.getElementById('name').value = ' ';
+                display();
+            }
+            else{
+                if(btn1.innerHTML==' '){
+
+                }
+                else{
+                    arr[index] = document.getElementById('name').value;
+                    document.getElementById('edit/add').innerHTML='Add';
+                    document.getElementById('name').value = '';
+                    display();
+                }
+                
+            }
+        }
+
+        function display(){
+            let outputArea = document.getElementById('output');
+            outputArea.innerHTML = '';
+            for(let i=0;i<arr.length;i++){
+                outputArea.innerHTML += arr[i]+
+                "<button onclick='del("+i+")'>Delete</button>"+
+                "<button onclick='edit("+i+")'>Edit</button>"+
+                "<br>"
+            }
+        }
+
+        function edit(val){
+            index = val;
+            document.getElementById('name').value=arr[index];
+            document.getElementById('edit/add').innerHTML='Edit';
+        }
+        function del(val){
+            arr.splice(val,1);
+            display();0
+        }
+    </script>
+</body>
+</html>

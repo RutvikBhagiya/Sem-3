@@ -1,0 +1,67 @@
+<!-- WAP to create a basic graphical Calculator using HTML and JavaScript. (A) -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+ <body>
+    <div style="width: 35%;" class="container mt-5 border border-dark">
+            <input class="form-control border border-dark mt-3" type="text" id="display"/>
+        <div class="row my-2">
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process(9)">9</button></div>
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process(8)">8</button></div>
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process(7)">7</button></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process(6)">6</button></div>
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process(5)">5</button></div>
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process(4)">4</button></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process(3)">3</button></div>
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process(2)">2</button></div>
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process(1)">1</button></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process(0)">0</button></div>
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process('.')">.</button></div>
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process('/')">/</button></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process('+')">+</button></div>
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process('-')">-</button></div>
+            <div class="col-4"><button class="btn btn-dark btn-lg w-100" onclick="Process('*')">*</button></div>
+        </div>
+        <div class="row my-2">
+            <div class="col-4 "><button class="btn btn-dark btn-lg w-100" onclick="BackSpace()">&lt;-</button></div>
+            <div class="col-4 "><button class="btn btn-dark btn-lg w-100" onclick="ClearAll()">C</button></div>
+            <div class="col-4  "><button class="btn btn-dark btn-lg w-100" onclick="Calculate()">=</button></div>
+        </div>
+    </div>
+
+    <script>
+        function Process(num){
+            document.getElementById('display').value+=num;
+        }
+
+        function BackSpace(){
+           back= document.getElementById('display').value.slice(0,-1);
+           document.getElementById('display').value=back;
+        }
+        function ClearAll(){
+            document.getElementById('display').value='';
+        }
+        function Calculate(){
+            let display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                display.value = 'Error';
+            }
+        }
+    </script>
+ </body>
+ </html>

@@ -1,0 +1,82 @@
+<!-- 4. Write a JavaScript program to validate user data given from the HTML form (A)
+1) username must be of minimum 8 characters
+2) password must contain at least 1 digit and 1 special character and should be between 8-
+12 characters
+3) password and repeat password must be same
+4) age must be greater than 18 (calculate from date of birth)
+5) enrollment must be of 11 digits
+6) email validation -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        form{
+            border-radius: 50px;
+            width: 40%;
+            height: 55vh;
+            background-color: blanchedalmond;
+        }
+        input{
+            border-radius: 20px;
+            align-self: center;
+            margin-top: 10px;
+            width: 90%;
+            margin-left: 10px;
+        }
+        h1{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+        #errormsg{
+            color: red;
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+        button{
+            margin-left: 40px;
+            border-radius: 10px;
+            background-color: rgb(208, 200, 113);
+        }
+        
+    </style>
+</head>
+<body>
+    <form class="form">
+        <h1>Login</h1>
+        <div><input type="text" placeholder="User-Name" id="user"></div>
+        <div><input type="password" placeholder="Password" id="pass"></div>
+        <div id="errormsg"></div>
+        <div>
+            <button onclick="checkPatt()">Submit</button>
+            <button onclick="clearAll()">Clear</button>
+        </div>
+    </form>
+    <script>
+        function checkPatt(){
+            let a = document.getElementById('pass');
+
+            let  passpattern = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,12}$/;
+            let regx = new RegExp(passpattern);
+            if(!regx.test(a.value)){
+                showError();    
+            }
+
+        }
+        function clearAll(){
+            document.getElementById('user').value = '';
+            document.getElementById('pass').value = '';
+        }
+        function showError() {
+            document.getElementById('errormsg').innerText="Invalid Password!";
+        }
+    </script>
+</body>
+</html>

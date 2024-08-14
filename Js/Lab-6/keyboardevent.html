@@ -1,0 +1,40 @@
+<!-- 3. WAP to recognize which keyboard event is ƒired. (B) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="margin: 20px;">
+        <div><textarea id="texthear" onkeyup="keyUp(event)" onkeydown="keyDown(event)" onkeypress="keyPressed(event)"></textarea> <button style="margin-left: 8%;" onclick="clearAll()">Clear</button></div>
+        <div id="whichKey"></div>
+    </div>
+    <script>
+        let textfield = document.getElementById('texthear');
+        let ans = " "
+        function keyUp(e){
+            ans += e.key+" Up <br>";
+            document.getElementById('whichKey').innerHTML=ans;
+            
+        }
+        function keyDown(e){
+            ans += e.key+" Down <br>"
+            document.getElementById('whichKey').innerHTML=ans;
+          
+        }
+        function keyPressed(e){
+            ans += e.key+" Pressed <br>";
+            document.getElementById('whichKey').innerHTML=ans;
+            
+        }
+        function clearAll(){
+            document.getElementById('texthear').value= "";
+            document.getElementById('whichKey').innerHTML = "";
+            ans = "";
+        }
+    </script>
+</body>
+</html>

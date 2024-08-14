@@ -1,0 +1,26 @@
+<!-- WAP to demonstrate change in properties of HTML element using JavaScript. (A) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p><input type="text" id="input"></p>
+	<button onclick="changeType()">Change to date/text</button>
+
+    
+    <script type="text/javascript">
+	function changeType(){
+		if(document.getElementById('input').type == 'text'){
+			document.getElementById('input').type = 'date';
+		}
+		else{
+			document.getElementById('input').type = 'text';
+		}
+	}
+</script>
+</body>
+</html>

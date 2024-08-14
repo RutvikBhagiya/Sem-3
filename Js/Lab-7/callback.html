@@ -1,0 +1,27 @@
+<!-- . WAP to demonstrate callbacks in JavaScript. (A) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Suprime(){
+            console.log("Suprime of Host");
+        }
+        function Under(){
+            console.log("After AllRounder");
+        }
+        function Rounder(callback){
+            console.log("AllRounder");
+            callback();
+        }
+
+        Rounder(Under);
+        Rounder(Suprime);
+    </script>
+</body>
+</html>
